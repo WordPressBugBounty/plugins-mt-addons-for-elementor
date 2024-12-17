@@ -1,0 +1,61 @@
+.mt-addons-premium-countdown {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.mt-addons-premium-countdown > div{
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 0;
+    float: left;
+    width: 133px;
+}
+.mt-addons-premium-countdown div div:first-child{
+    text-align: center;
+}
+.mt-addons-premium-countdown div div:last-child{
+    opacity: 0.7;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+}
+.mt-addons-premium-countdown > span {
+    float: left;
+    font-size: 60px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+.mt-addons-premium-countdown .days-digit {
+    font-size: 70px;
+    line-height: 25px;
+}
+.mt-addons-premium-countdown .days-name {
+    font-size: 20px;
+    margin-top: 5px !important;
+}
+.mt-addons-premium-countdown .hours-digit {
+    font-size: 70px;
+    line-height: 25px;
+}
+.mt-addons-premium-countdown .hours-name {
+    font-size: 20px;
+    margin-top: 5px !important;
+}
+.mt-addons-premium-countdown .minutes-digit {
+    font-size: 70px;
+    line-height: 25px;
+}
+.mt-addons-premium-countdown .minutes-name {
+    font-size: 20px;
+    margin-top: 5px !important;
+}
+.mt-addons-premium-countdown .seconds-digit {
+    font-size: 70px;
+    line-height: 25px;
+}
+.mt-addons-premium-countdown .seconds-name {
+    font-size: 20px;
+    margin-top: 5px !important;
+}

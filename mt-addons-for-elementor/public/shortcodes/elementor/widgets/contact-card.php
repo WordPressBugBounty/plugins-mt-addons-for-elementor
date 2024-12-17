@@ -467,9 +467,9 @@ class mt_addons_contact_card extends Widget_Base {
                                 ?>
                                 <li class="mt-addons-contact-card-list-item">
                                     <a class="<?php echo esc_attr($title_visible); ?>" <?php echo wp_kses($this->get_render_attribute_string( 'title_url' ), 'link'); ?>>
-                                        <<?php echo esc_attr($title_tag); ?> class="mt-addons-contact-card-list-title">
-                                        <?php echo esc_html($title); ?>
-                                    </<?php echo esc_attr($title_tag); ?>>
+                                        <<?php echo Utils::validate_html_tag( $title_tag ); ?> class="mt-addons-contact-card-list-title">
+                                            <?php echo esc_html($title); ?>
+                                        </<?php echo Utils::validate_html_tag( $title_tag ); ?>>
                                     </a>
                                     <a class="mt-addons-contact-card-text-item elementor-repeater-item-<?php echo esc_attr($card['_id'])?>" <?php echo htmlspecialchars($subtitle_url_attribute); ?>>
                                         <i class="mt-addons-contact-card-list-icon <?php echo esc_attr($icon_visible); ?> <?php echo esc_attr($icon); ?>" aria-hidden="true"></i>

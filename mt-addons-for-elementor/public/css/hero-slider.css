@@ -76,7 +76,7 @@ body .swiper-pagination.pagination-clickable .swiper-pagination-bullet{
 .swiper-rtl .swiper-button-next .far.fa-arrow-left.swiper-button-prev.nav_middle {
     left: 20px;
 }
-.swiper-button-next, .swiper-rtl .swiper-button-prev .fa-arrow-right.swiper-button-next.nav_middle{
+.swiper-rtl .swiper-button-prev .fa-arrow-right.swiper-button-next.nav_middle{
     right: 20px !important;
 }
 .swiper-button-prev:hover,

@@ -1,0 +1,52 @@
+.mt-addons-premium-advanced-sale-banners-container {
+    background-color: #CCD4E1;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+.mt-addons-premium-advanced-sale-banners-content {
+    z-index: 2;
+    position: relative;
+    width: 50%;
+    justify-content: center;
+    align-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.mt-addons-premium-advanced-sale-banners-text {
+    font-weight: 700;
+    font-size: 32px;    
+    margin-bottom: 40px;
+}
+.mt-addons-premium-advanced-sale-banners-discount-btn-zone {
+    display: inline-grid;
+}
+.mt-addons-premium-advanced-sale-banners-discount-btn {
+    transition: all 250ms ease-in;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 15px 60px 15px 60px;
+}
+.mt-addons-premium-advanced-sale-banners-image {
+    width: 50%;
+    justify-content: center;
+    align-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.mt-addons-premium-advanced-sale-banners-discount-btn-zone a:last-child {
+    margin-bottom: 0;
+}
+.elementor-editor-active .mt-addons-premium-advanced-sale-banners-text{
+    line-height:normal;
+}
+@media only screen and (max-width: 767px) {
+	.mt-addons-premium-advanced-sale-banners-discount-btn{
+		padding: 15px 30px 15px 30px;
+	}
+}

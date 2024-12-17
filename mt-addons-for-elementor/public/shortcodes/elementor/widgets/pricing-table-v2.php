@@ -72,8 +72,9 @@ class mt_addons_pricing_table_v2 extends Widget_Base {
                     'h4'                => esc_html__( 'H4', 'mt-addons' ),
                     'h5'                => esc_html__( 'H5', 'mt-addons' ),
                     'h6'                => esc_html__( 'H6', 'mt-addons' ),
+                    'p'                 => esc_html__( 'p', 'mt-addons' ),
                 ],
-                'default'           => 'h1',
+                'default'               => 'h1',
             ]
         );
         $this->add_control(
@@ -655,7 +656,7 @@ class mt_addons_pricing_table_v2 extends Widget_Base {
             <div class="mt-package-title">
                 <<?php echo esc_attr($tag_select); ?> class="price-title">
                     <?php echo esc_html($title); ?>
-                </<?php echo esc_attr($tag_select); ?>>
+                </<?php echo Utils::validate_html_tag( $tag_select ); ?>>
             </div>
             <div class="mt-package-price">
                 <span class="cd-value-year">

@@ -1,0 +1,6 @@
+.mt-addons-premium-text-gradient .mt-addons-premium-text-gradient-element{
+      background-clip: text !important;
+      color: transparent !important;
+      font-weight: bold;
+      display: inline-block;
+}

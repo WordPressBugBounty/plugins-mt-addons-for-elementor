@@ -164,7 +164,18 @@ class mt_addons_blog_posts extends Widget_Base {
 				'label' 		=> esc_html__( 'Title color', 'mt-addons' ),
 				'label_block' 	=> true,
 				'selectors' 	=> [
-        			'{{WRAPPER}} .mt-addons-blog-posts-carousel-post-name' => 'color: {{VALUE}};',
+        			'{{WRAPPER}} .mt-addons-blog-posts-carousel-post-name a' => 'color: {{VALUE}};',
+    			],
+			]
+		);
+		$this->add_control(
+			'title_color_hover',
+			[
+				'type' 			=> \Elementor\Controls_Manager::COLOR,
+				'label' 		=> esc_html__( 'Title Color Hover ', 'mt-addons' ),
+				'label_block' 	=> true,
+				'selectors' 	=> [
+        			'{{WRAPPER}} .mt-addons-blog-posts-carousel-post-name a:hover' => 'color: {{VALUE}};',
     			],
 			]
 		);
@@ -277,7 +288,7 @@ class mt_addons_blog_posts extends Widget_Base {
 				'label' 		=> esc_html__( 'Button text Color', 'mt-addons' ),
 				'label_block' 	=> true,
 				'selectors' 	=> [
-        			'{{WRAPPER}} .mt-addons-blog-posts-carousel-content-inside' => 'color: {{VALUE}};',
+        			'{{WRAPPER}} .mt-addons-blog-posts-carousel-custom a' => 'color: {{VALUE}};',
     			],
 				'default' 		=> '#ffffff',
 			]

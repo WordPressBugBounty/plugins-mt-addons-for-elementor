@@ -1,0 +1,229 @@
+#maphp-hexGrid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: sans-serif;
+  list-style-type: none;
+}
+
+.maphp-hex {
+  position: relative;
+  visibility: hidden;
+  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: all 0.5s;
+}
+.maphp-hex::after {
+  content: "";
+  display: block;
+  padding-bottom: 86.602%; /* =  100 / tan(60) * 1.5 */
+}
+li.maphp-hex {
+  content: "";
+  display: block;
+  padding-bottom: 16.102%; /* =  100 / tan(60) * 1.5 */
+}
+.maphp-hexIn {
+  position: absolute;
+  width: 96%;
+  padding-bottom: 110.851%; /* =  width / sin(60) */
+  margin: 2%;
+  overflow: hidden;
+  visibility: hidden;
+  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+  -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+  transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+  transition: all 0.5s;
+}
+.maphp-hexIn * {
+  position: absolute;
+  visibility: visible;
+  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+}
+.maphp-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+  -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+  transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+}
+
+/*** HEX CONTENT **********************************************************************/
+.maphp-hex maphp-img {
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.maphp-hex h3,
+.maphp-hex p {
+  width: 100%;
+  padding: 5%;
+  box-sizing: border-box;
+  font-weight: 300;
+  opacity: 0;
+}
+
+#maphp-title {
+  color: #f5ce95;
+  text-transform: capitalize;
+  text-align: center;
+  bottom: 50%;
+  padding-top: 50%;
+  font-size: 1.5em;
+  z-index: 1;
+}
+.maphp-hex h3:before,
+.maphp-hex h3:after {
+  display: inline-block;
+  margin: 0 0.5em;
+  width: 0.25em;
+  height: 0.03em;
+  background: #ffffff;
+  content: "";
+  vertical-align: middle;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+#maphp-subtitle {
+  top: 50%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.maphp-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.maphp-img:before,
+.maphp-img:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.maphp-img:before {
+  background: rgba(22, 103, 137, 0.3);
+}
+.maphp-img:after {
+  background: linear-gradient(
+    to top,
+    transparent,
+    rgba(0, 0, 0, 0.5),
+    transparent
+  );
+}
+
+/*** HOVER EFFECT  **********************************************************************/
+
+.maphp-link:hover,
+.maphp-link:focus,
+.maphp-link:hover p,
+.maphp-link:focus p {
+  opacity: 1;
+  transition: 0.8s;
+}
+
+.maphp-hexIn:hover .maphp-img:before,
+.maphp-hexIn:hover .maphp-img:after,
+.maphp-hexIn:hover .maphp-link {
+  opacity: 1;
+}
+
+/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
+@media (min-width: 1201px) {
+  /* <- 5-4  hexagons per row */
+  #maphp-hexGrid {
+    padding-bottom: 4.4%;
+  }
+  .maphp-hex {
+    width: 20%; /* = 100 / 5 */
+  }
+  .maphp-hex:nth-child(9n + 6) {
+    /* first hexagon of even rows */
+    margin-left: 10%; /* = width of .maphp-hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  /* <- 4-3  hexagons per row */
+  #maphp-hexGrid {
+    padding-bottom: 5.5%;
+    font-size: 13px;
+  }
+  .maphp-hex {
+    width: 25%; /* = 100 / 4 */
+  }
+  .maphp-hex:nth-child(7n + 5) {
+    /* first hexagon of even rows */
+    margin-left: 12.5%; /* = width of .maphp-hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+  /* <- 3-2  hexagons per row */
+  #maphp-hexGrid {
+    padding-bottom: 7.4%;
+    font-size: 14px;
+  }
+  .maphp-hex {
+    width: 33.333%; /* = 100 / 3 */
+  }
+  .maphp-hex:nth-child(5n + 4) {
+    /* first hexagon of even rows */
+    margin-left: 16.666%; /* = width of .maphp-hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 600px) {
+  /* <- 2-1  hexagons per row */
+  #maphp-hexGrid {
+    padding-bottom: 11.2%;
+    font-size: 12px;
+  }
+  .maphp-hex {
+    width: 50%; /* = 100 / 3 */
+  }
+  .maphp-hex:nth-child(3n + 3) {
+    /* first hexagon of even rows */
+    margin-left: 25%; /* = width of .maphp-hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 400px) {
+  #maphp-hexGrid {
+    font-size: 8px;
+  }
+}

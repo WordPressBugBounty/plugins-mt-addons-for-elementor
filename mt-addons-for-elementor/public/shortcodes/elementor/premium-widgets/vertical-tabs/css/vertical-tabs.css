@@ -1,0 +1,217 @@
+.mtap-vertical-tabs {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.mtap-vertical-tabs label {
+   position: relative;
+   order: 1;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   width: 325px;
+   height: calc(500px / 8);
+   padding: 10px 15px;
+   margin-bottom: 0;
+   background-color: transparent;
+   cursor: pointer;
+   transition: background-color 500ms ease-in-out;
+}
+.mtap-vertical-tabs label > img {
+   width: 30px;
+   height: auto;
+   filter: saturate(0);
+   transition: all 500ms ease-in-out;
+}
+.mtap-vertical-tabs label > svg {
+   width: 30px;
+   height: auto;
+   filter: saturate(0);
+   transition: all 500ms ease-in-out;
+}
+.mtap-vertical-tabs label:hover > img {
+   filter: saturate(1);
+}
+.mtap-vertical-tabs label > p {
+   padding: 0 0 0 15px;
+   margin: 0;
+   font-family: sans-serif;
+   font-size: 0.8em;
+   color: #909090;
+   text-transform: uppercase;
+   transition: all 500ms ease-in-out;
+}
+.mtap-vertical-tabs label:hover {
+   background-color: rgba(0, 0, 0, 0.03);
+}
+.mtap-vertical-tabs label:hover > p {
+   color: #0792c7;
+}
+
+.mtap-vertical-tabs .mtap-vertical-tab-content {
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: calc(100% - 325px);
+   padding: 0;
+   margin: 0;
+   display: none;
+}
+.mtap-vertical-tabs .mtap-vertical-tab-content > div {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: stretch;
+   background-color: #fff;
+}
+.mtap-vertical-tabs .mtap-vertical-text-tab {
+   width: 100%;
+   padding: 0vh calc(2vw + 15px);
+}
+
+.mtap-vertical-tabs > input {
+   display: none;
+}
+.mtap-vertical-tabs > input + label::before {
+   content: "";
+   position: absolute;
+   left: 100%;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 0;
+   height: 0;
+   border: 0 solid transparent;
+   border-right: 0;
+   transition: all 500ms ease;
+   z-index: 1;
+}
+.mtap-vertical-tabs > input + label::after {
+   content: "";
+   position: absolute;
+   right: 0;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 1px;
+   height: 100%;
+   background-color: #ccc;
+   transition: all 500ms ease;
+}
+.mtap-vertical-tabs > input:checked + label {
+   background-color: rgba(0, 0, 0, 0.03);
+}
+.mtap-vertical-tabs > input:checked + label::before {
+   border: 8px solid transparent;
+   border-right: 0;
+   border-left-color: #0792c7;
+}
+.mtap-vertical-tabs > input:checked + label::after {
+   width: 5px;
+   background-color: #0792c7;
+}
+.mtap-vertical-tabs > input:checked + label > img {
+   filter: saturate(1);
+}
+.mtap-vertical-tabs > input:checked + label > p {
+   color: #0792c7;
+}
+.mtap-vertical-tabs > input:checked + label + .mtap-vertical-tab-content {
+   display: block;
+   height: 100%;
+   background: #fff;
+}
+.mtap-vertical-tabs [class*="mtap-vertical-tab-img"] {
+   width: 50%;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: 50%;
+   min-height: 35vh;
+   margin-bottom: 30px;
+}
+@media only screen and (max-width: 1239px) {
+   .mtap-vertical-tabs {
+      flex-direction: row;
+   }
+   .mtap-vertical-tabs label {
+      display: block;
+      width: calc(100% / 4);
+      height: auto;
+      padding: 15px 0 20px;
+      text-align: center;
+   }
+   .mtap-vertical-tabs label > img {
+      width: 50px;
+   }
+   .mtap-vertical-tabs label > p {
+      padding: 15px 10px 0;
+   }
+   .mtap-vertical-tabs > input + label::before {
+      display: none;
+   }
+   .mtap-vertical-tabs > input + label::after {
+      right: auto;
+      left: 50%;
+      top: auto;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 1px;
+      border: none;
+   }
+   .mtap-vertical-tabs > input:checked + label::after {
+      width: 100%;
+      height: 5px;
+      background-color: #0792c7;
+   }
+   .mtap-vertical-tabs .mtap-vertical-tab-content {
+      order: 2;
+      position: relative;
+      width: 100%;
+   }
+   .mtap-vertical-tabs .mtap-vertical-tab-content > .reverse-tab > .mtap-vertical-text-tab {
+      order: 2;
+   }
+   .mtap-vertical-tabs .mtap-vertical-tab-content > div > div {
+      width: 50%;
+      height: auto;
+   }
+   .mtap-vertical-tabs .mtap-vertical-text-tab {
+      min-height: 25vh;
+   }
+}
+
+@media only screen and (max-width: 959px) {
+   .mtap-vertical-tabs .mtap-vertical-tab-content > div > div {
+      width: 100%;
+   }
+   .mtap-vertical-tabs .mtap-vertical-tab-content > .reverse-tab > .mtap-vertical-text-tab {
+      order: 0;
+   }
+}
+
+@media only screen and (max-width: 767px) {
+   .mtap-vertical-tabs label {
+      width: calc(100% / 2);
+      padding: 15px 0;
+   }
+   .mtap-vertical-tabs label > img {
+      display: none;
+   }
+   .mtap-vertical-tabs label > p {
+      padding: 0;
+   }
+   .mtap-vertical-tabs [class*="mtap-vertical-tab-img"] {
+      min-height: 25vh;
+   }
+}
+
+@media only screen and (max-width: 480px) {
+   .mtap-vertical-tabs label {
+      width: 100%;
+   }
+}
+.mtap-vertical-tabs {
+   margin-bottom: 10%;
+}

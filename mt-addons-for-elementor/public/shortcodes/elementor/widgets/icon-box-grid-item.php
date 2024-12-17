@@ -170,7 +170,7 @@ class mt_addons_icon_box_grid_item extends Widget_Base {
 				'type' 				=> \Elementor\Controls_Manager::COLOR,
 				'label' 			=> esc_html__( 'Title Color', 'mt-addons' ),
 				'selectors' 		=> [
-                    '{{WRAPPER}} .mt-addons-grid-class-single .mt-addons-grid-class-title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mt-addons-grid-class-single .mt-addons-grid-class-title a' => 'color: {{VALUE}}',
                 ],
                 'default' 			=> '#000000',
 			]
@@ -181,7 +181,7 @@ class mt_addons_icon_box_grid_item extends Widget_Base {
 				'type' 				=> \Elementor\Controls_Manager::COLOR,
 				'label' 			=> esc_html__( 'Title Hover Color', 'mt-addons' ),
 				'selectors' 		=> [
-                    '{{WRAPPER}} .mt-addons-grid-class-single:hover .mt-addons-grid-class-title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mt-addons-grid-class-single .mt-addons-grid-class-title a:hover' => 'color: {{VALUE}}',
                 ],
                 'default' 			=> '#000000',
 			]
@@ -487,10 +487,10 @@ class mt_addons_icon_box_grid_item extends Widget_Base {
 	  						<?php } ?>
 	        			</div>
 		        		<div class="mt-addons-title-wrapper">
-		          			<<?php echo esc_attr($title_tag); ?> class="mt-addons-grid-class-title <?php echo esc_html($title_separator_class); ?>"><a href="<?php echo esc_url($read_more_link); ?>"><?php echo esc_html($title); ?></a></<?php echo esc_attr($title_tag);?>>
+		          			<<?php echo Utils::validate_html_tag( $title_tag ); ?> class="mt-addons-grid-class-title <?php echo esc_html($title_separator_class); ?>"><a href="<?php echo esc_url($read_more_link); ?>"><?php echo esc_html($title); ?></a></<?php echo Utils::validate_html_tag( $title_tag ); ?>>
 		          		</div>
 		          		<div class="mt-addons-subtitle-wrapper">
-		          			<<?php echo esc_attr($subtitle_tag); ?> class="mt-addons-grid-class-subtitle"><?php echo esc_html($subtitle); ?></<?php echo esc_attr($subtitle_tag);?>>
+		          			<<?php echo Utils::validate_html_tag( $subtitle_tag ); ?> class="mt-addons-grid-class-subtitle"><?php echo esc_html($subtitle); ?></<?php echo Utils::validate_html_tag( $subtitle_tag ); ?>>
 		          		</div>
 
 		      			<?php if(!empty($read_more_link) && !empty($read_more_text)){ ?>

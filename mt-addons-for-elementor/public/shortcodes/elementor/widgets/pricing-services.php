@@ -72,6 +72,7 @@ class mt_addons_pricing_services extends Widget_Base {
                     'h4'            => esc_html__('h4', 'mt-addons'),
                     'h5'            => esc_html__('h5', 'mt-addons'),
                     'h6'            => esc_html__('h6', 'mt-addons'),
+                    'p'             => esc_html__('p', 'mt-addons'),
                 ],
                 'default'       => 'h2',
             ]
@@ -393,7 +394,7 @@ class mt_addons_pricing_services extends Widget_Base {
         <div class="mt-addons-services-container">
             <div class="mt-addons-price-container">
                 <div class="mt-addons-title-pricing">
-                    <<?php echo esc_attr($title_tag); ?> class="mt-addons-price-title"><?php echo esc_html($title); ?></<?php echo esc_attr($title_tag); ?>>
+                    <<?php echo Utils::validate_html_tag( $title_tag ); ?> class="mt-addons-price-title"><?php echo esc_html($title); ?></<?php echo Utils::validate_html_tag( $title_tag ); ?>>
                 </div>
                 <div class="mt-addons-price-list-container">
                     <ul class="mt-addons-price-list">

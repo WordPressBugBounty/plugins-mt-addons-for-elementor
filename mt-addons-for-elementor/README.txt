@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, mt add
 Requires at least: 5.0
 Tested up to: 6.4.3
 Requires PHP: 7.0
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -213,6 +213,11 @@ From wordpress.org
 2. A-Z Widgets list
 
 == Changelog ==
+= 1.0.7 - 17-12-2024 =
+- Fixed: Security issues
+- Fixed: Speed issues
+- Added: A few more options on widgets
+
 = 1.0.6 - 27-06-2024 =
 - Fixed: Style of some widgets
 - Fixed: PHP 8.3.0 warnings

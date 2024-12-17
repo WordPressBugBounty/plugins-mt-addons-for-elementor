@@ -1,0 +1,21 @@
+.mt-addons-premium-animated-text.mtap-loop .mt-addons-premium-animated-text-inner {
+      animation: mtap-shine-animation 8s linear infinite;
+}
+.mt-addons-premium-animated-text .mt-addons-premium-animated-text-inner {
+  margin: 0;
+  letter-spacing: 1vw;
+  color: white;
+  background-size: auto 200%;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes mtap-shine-animation {
+  from {
+    background-position: center 0;
+  }
+  to {
+    background-position: center 200%;
+  }
+}

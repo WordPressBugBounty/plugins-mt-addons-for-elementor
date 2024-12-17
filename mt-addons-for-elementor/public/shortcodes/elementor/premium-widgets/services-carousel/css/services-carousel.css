@@ -1,0 +1,154 @@
+.mt-addons-premium-services-carousel .owl-item {
+    height: 660px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    border-right: 1px solid rgba(255,255,255,0.4);
+    padding: 25px;
+    padding-bottom: 20px;
+    padding-right: 25px;
+}
+.mt-addons-premium-services-carousel .item.mt-addons-premium-service {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+}
+.mt-addons-premium-services-carousel .owl-item .mt-addons-premium-services-name {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.mt-addons-premium-services-carousel .mt-addons-premium-services-icon {
+    width: 20%;
+    float: right;
+    display: contents;
+}
+.mt-addons-premium-services-carousel .owl-item .mt-addons-premium-services-name a {
+    color: #fff;
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 500;
+}
+.mt-addons-premium-services-carousel .owl-item a i {
+	padding: 13px 13.43px;
+    width: 40px;
+    margin-top: 7px;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 12px;
+    height: 40px;
+    text-align: center;
+}
+.mt-addons-premium-services-icon a svg {
+    padding: 13px 13.43px;
+    width: 40px;
+    margin-top: 7px;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    fill: #fff;
+    font-size: 12px;
+    height: 40px;
+    text-align: center;
+}
+.mt-addons-premium-services-carousel .owl-controls .owl-buttons > div {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    border: 3px solid #fff;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.mt-addons-premium-services-carousel .owl-controls .owl-buttons > div i {
+	font-size: 12px;
+    text-align: center;
+}
+.mt-addons-premium-services-carousel .owl-controls .owl-buttons > div svg {
+    text-align: center;
+    fill: #fff;
+    width: 14px;
+}
+.mt-addons-premium-services-carousel .owl-controls .owl-buttons .owl-prev {
+    left: 25px;
+}
+.mt-addons-premium-services-carousel .owl-controls .owl-buttons .owl-next {
+    right: 25px;
+}
+.mt-addons-premium-services-carousel .owl-controls {
+    margin-top: 0;
+}
+.mt-addons-premium-services-carousel .item::before {
+    content: none;
+}
+.mt-addons-premium-services-carousel.owl-theme .owl-controls {
+    margin-top: 0;
+}
+.mt-addons-premium-services-carousel.owl-theme .services-shadow-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,0.700717787114846) 0%, rgba(0,0,0,0) 40%);
+    transition: all .4s ease;
+}
+.mt-addons-premium-services-carousel.owl-theme .owl-item:hover .services-shadow-overlay {
+    height: 30%;
+}
+.mt-addons-premium-services-carousel.owl-theme .owl-item {
+    cursor: pointer;
+}
+.mt-addons-premium-services-carousel-4 .owl-item,
+.mt-addons-premium-services-carousel-3 .owl-item {
+    padding: 40px 45px;
+    padding-right: 30px;
+}
+@media screen and (max-width: 52.8em), screen and (max-height: 32em){
+    .item {
+        top: 0;
+        left: 0;
+        pointer-events: auto;
+        background: transparent;
+    }
+}
+@media screen and (max-width: 52.8em), screen and (max-height: 32em){  
+    .view, .item, .item__img, .scene {
+        -webkit-transform: none !important;
+        transform: none !important;
+    }
+}
+.owl-carousel {
+    display: none;
+    position: relative;
+    width: 100%;
+    -ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper-outer {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.owl-carousel .owl-wrapper, .owl-carousel .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+}
+.owl-carousel .owl-item {
+    float: left;
+}

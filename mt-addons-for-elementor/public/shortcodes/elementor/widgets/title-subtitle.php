@@ -362,8 +362,8 @@ class mt_addons_title_subtitle extends Widget_Base {
       		} elseif ($underline_style == 'square') {
         		$underline = 'square';
       		} ?>
-
-      		<<?php echo esc_attr($title_tag); ?> class="mt-addons-title-section"><?php echo esc_html($title); ?> <span class="mt-underline-text <?php echo esc_attr($underline); ?>"><?php echo esc_html($title_underline); ?></span> <?php echo esc_html($title_2); ?></<?php echo esc_attr($title_tag); ?>>
+ 
+      		<<?php echo Utils::validate_html_tag( $title_tag ); ?> class="mt-addons-title-section"><?php echo esc_html($title); ?> <span class="mt-underline-text <?php echo esc_attr($underline); ?>"><?php echo esc_html($title_underline); ?></span> <?php echo esc_html($title_2); ?></<?php echo Utils::validate_html_tag( $title_tag ); ?>>
 
       		<?php if (($separator_status && $subtitle_position == 'down') || ($separator_status && $subtitle_position == '')) { ?>
         		<?php if ($separator_type == "image") { ?>

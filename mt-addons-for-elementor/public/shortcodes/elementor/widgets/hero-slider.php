@@ -858,10 +858,6 @@ class mt_addons_hero_slider extends Widget_Base {
         $nav_style 					= $settings['nav_style'];
         $navigation 				= $settings['navigation'];
         $pagination 				= $settings['pagination'];
-        $slider_title_color 		= $settings['slider_title_color'];
-        $slider_subtitle_color 		= $settings['slider_subtitle_color'];
-        $slider_beftitle_color 		= $settings['slider_beftitle_color'];
-        $slider_aftersubtitle_color = $settings['slider_aftersubtitle_color'];
 
 	    $id = 'mt-addons-swipper-'.uniqid();
 
@@ -923,24 +919,26 @@ class mt_addons_hero_slider extends Widget_Base {
 		                        	<div class="mtfe-container">
 		                          		<div class="mt-addons-hero-slider-holder elementor-repeater-items-<?php echo esc_attr( $slider['_id'] ); ?>">
 				                            <?php if(!empty($slider['before_title'])){ ?> 
-				                            	<<?php echo esc_attr( $before_tag ); ?> class="mt-addons-hero-slider-beftitle">
+				                            	<<?php echo Utils::validate_html_tag( $before_tag ); ?> class="mt-addons-hero-slider-beftitle">
 				                              		<?php echo esc_html($slider['before_title']);?> 
-				                              	</<?php echo esc_attr( $before_tag ); ?>>
+				                            	</<?php echo Utils::validate_html_tag( $before_tag ); ?>>
 				                            <?php } ?>
 				                            <?php if(!empty($slider['title'])){ ?>
-				                            	<<?php echo esc_attr( $title_tag ); ?> class="mt-addons-hero-slider-title"> 
+				                            	<<?php echo Utils::validate_html_tag( $title_tag ); ?> class="mt-addons-hero-slider-title"> 
 				                            		<?php echo esc_html($slider['title']);?> 
-				                            	</<?php echo esc_attr( $title_tag ); ?>>
+				                            	</<?php echo Utils::validate_html_tag( $title_tag ); ?>>
 				                            <?php } ?>
 				                            <?php if(!empty($slider['subtitle'])){ ?>
-				                            	<<?php echo esc_attr( $subtitle_tag ); ?> class="mt-addons-hero-slider-subtitle"> 
+				                            	<<?php echo Utils::validate_html_tag( $subtitle_tag ); ?> 
+				                            	class="mt-addons-hero-slider-subtitle"> 
 				                            		<?php echo esc_html($slider['subtitle']);?> 
-				                            	</<?php echo esc_attr( $subtitle_tag ); ?>>
+				                            	</<?php echo Utils::validate_html_tag( $subtitle_tag ); ?>>
 				                            <?php } ?>
 				                            <?php if(!empty($slider['after_subtitle'])){ ?>
-				                            	<<?php echo esc_attr( $after_tag ); ?> class="mt-addons-hero-slider-aftersubtitle"> 
+				                            	<<?php echo Utils::validate_html_tag( $after_tag ); ?>
+				                            	class="mt-addons-hero-slider-aftersubtitle"> 
 				                              		<?php echo esc_html($slider['after_subtitle']);?> 
-				                              	</<?php echo esc_attr( $after_tag ); ?>>
+				                            	</<?php echo Utils::validate_html_tag( $after_tag ); ?>>
 				                            <?php } ?>
 				                            <?php if( $button_status == "yes") { ?>
 				                                <a href="<?php echo esc_url($slider_button_url);?>" class="relative ">

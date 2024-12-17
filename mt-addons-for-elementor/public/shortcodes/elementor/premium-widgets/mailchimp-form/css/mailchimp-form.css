@@ -1,0 +1,46 @@
+.contact-form {
+    padding-bottom: 15px;
+    padding-right: 10px;
+}
+.mc4wp-form input, .mc4wp-form textarea{
+    outline: none;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form textarea{
+   width: 100%;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form input,
+.mt-addons-premium-mailchimp-form .mc4wp-form textarea{
+    display: list-item;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form label {
+    margin-bottom: 10px;
+    font-weight: 13px;
+    color: #000000;
+    font-weight: 600;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=date], .mt-addons-premium-mailchimp-form .mc4wp-form input[type=email], 
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=number], .mt-addons-premium-mailchimp-form .mc4wp-form input[type=password], 
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=search], input[type=tel], .mt-addons-premium-mailchimp-form .mc4wp-form input[type=text], .mt-addons-premium-mailchimp-form .mc4wp-form input[type=url], 
+.mt-addons-premium-mailchimp-form .mc4wp-form select, .mt-addons-premium-mailchimp-form .mc4wp-form textarea {
+    border: 1px solid #dddddd;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=date]:focus, .mt-addons-premium-mailchimp-form .mc4wp-form input[type=email]:focus, 
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=number]:focus, .mt-addons-premium-mailchimp-form .mc4wp-form input[type=password]:focus, 
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=search]:focus, .mt-addons-premium-mailchimp-form .mc4wp-form input[type=tel]:focus, .mt-addons-premium-mailchimp-form .mc4wp-form input[type=text]:focus, 
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=url]:focus, .mt-addons-premium-mailchimp-form .mc4wp-form select:focus, .mt-addons-premium-mailchimp-form .mc4wp-form textarea:focus { 
+    border: 1px solid #3147FF;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=submit] {
+    font-weight: 600;
+    color: #fff;
+    background-color: #3147FF;
+    transition: all 350ms;
+    border: 1px solid #3147FF;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=submit]:hover {
+    background-color: #000000;
+    border: 1px solid #000000;
+}
+.mt-addons-premium-mailchimp-form .mc4wp-form input[type=submit]:focus {
+    outline: none;
+}

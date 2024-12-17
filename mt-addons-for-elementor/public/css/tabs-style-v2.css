@@ -10,7 +10,19 @@
     margin: 0 auto;
     padding: 0;
     list-style: none;
-    border-bottom: 1px solid;
+    transition: .5s;
+}
+.mt-addons-tabs-v2 nav ul li {
+    border-bottom: 2px solid;
+}
+.craft .mt-addons-tabs-v2 nav ul li{
+    padding-bottom: 1px!important;
+}
+.craft .mt-addons-tabs-v2 nav ul li{
+    border-bottom:unset;
+}
+.craft .mt-addons-tabs-v2 nav ul li.tab-active{
+    border-bottom: 2px solid!important;
 }
 .mt-addons-tabs-v2 nav ul li {
     width: 100%;
@@ -25,7 +37,22 @@
     text-align: center;
     padding-bottom: 10px;
 }
-.mt-addons-tabs-v2 nav ul li.tab-active {
+.workshops .mt-addons-tab-desc-content{
+    font-size: 70px;
+    color: #fff;
+    line-height: 80px;
+    text-align: left;
+    font-weight: 700;
+    font-style: normal;
+}
+.workshops .mt-icon-listgroup-title {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.mt-addons-tabs-v2 ul li.tab-active{
     border-bottom: 2px solid;
 }
 .mt-addons-tabs-v2 nav ul li.tab-current a {
@@ -137,7 +164,7 @@ body .mt-addons-tab-content-v2 img.mt-addons-tab-content-image {
     -webkit-transition: all 400ms ease 0s;
 }
 .mt-addons-tab-content-button:hover {
-    background-color: #222 !important;
+    background-color: #222;
 }
 .mt-addons-tabs-v2.no_underline nav ul{
     border: 0;

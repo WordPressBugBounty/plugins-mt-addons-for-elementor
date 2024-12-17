@@ -137,7 +137,7 @@ class mt_addons_sale_banner extends Widget_Base {
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'margin_title',
             [
                 'label'         => esc_html__( 'Title Spacing', 'mt-addons' ),
@@ -189,7 +189,7 @@ class mt_addons_sale_banner extends Widget_Base {
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'margin_subtitle',
             [
                 'label'         => esc_html__( 'Subtitle Spacing', 'mt-addons' ),
@@ -241,7 +241,7 @@ class mt_addons_sale_banner extends Widget_Base {
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'margin_paragraph',
             [
                 'label'         => esc_html__( 'Paragraph Spacing', 'mt-addons' ),
@@ -598,7 +598,7 @@ class mt_addons_sale_banner extends Widget_Base {
                 'selector'          => '{{WRAPPER}} .discount-btn',
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'padding',
             [
                 'label'             => esc_html__( 'Padding', 'mt-addons' ),

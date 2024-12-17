@@ -50,6 +50,32 @@ class mt_addons_tabs_style_v2 extends Widget_Base {
                 'default'       => 'no',
             ]
         );
+       $this->add_control(
+            'content_position', 
+            [
+                'label'                => esc_html__( 'Tab Image Position', 'mt-addons' ),
+                'type'                 => \Elementor\Controls_Manager::CHOOSE, 
+                'options'              => [
+                    'left'  => [
+                        'title' => esc_html__( 'Left', 'mt-addons' ),
+                        'icon'  => 'eicon-h-align-left',
+                    ],
+                    'right' => [
+                        'title' => esc_html__( 'Right', 'mt-addons' ),
+                        'icon'  => 'eicon-h-align-right',
+                    ],
+                ],
+                'default'              => 'right',
+                'selectors_dictionary' => [
+                    'left'  => 'flex-flow: inherit',
+                    'right' => 'flex-direction:row-reverse',
+                ],
+                'toggle'               => false, 
+                'selectors'            => [
+                    '{{WRAPPER}} .mt-addons-tab-content-v2 .mtfe-row ' => '{{VALUE}}',
+                ],
+            ]
+        );
         $this->add_control(
             'top_title',
             [
@@ -214,11 +240,28 @@ class mt_addons_tabs_style_v2 extends Widget_Base {
                 'label'         => esc_html__( 'Border Color', 'mt-addons' ),
                 'type'          => Controls_Manager::COLOR,
                 'selectors'     => [
-                    '{{WRAPPER}} .mt-addons-tabs-v2 nav ul ' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .mt-addons-tabs-v2 ul li ' => 'border-color: {{VALUE}};',
                 ],
                 'default'       => '#0A0A0A',
                 'condition'     => [
                     'underline_nav' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'divider_3',
+            [
+                'type'          => \Elementor\Controls_Manager::DIVIDER,
+            ]
+        );
+        $this->add_responsive_control(
+            'padding_tab',
+            [
+                'label'         => esc_html__( 'Padding', 'mt-addons' ),
+                'type'          => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units'    => [ 'px', '%', 'em', 'rem', 'custom' ],
+                'selectors'     => [
+                    '{{WRAPPER}} .mt-addons-tabs-v2 nav ul' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -228,7 +271,7 @@ class mt_addons_tabs_style_v2 extends Widget_Base {
                 'label'         => esc_html__( 'Border Color Active', 'mt-addons' ),
                 'type'          => Controls_Manager::COLOR,
                 'selectors'     => [
-                    '{{WRAPPER}} .mt-addons-tabs-v2 nav ul li.tab-active' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .mt-addons-tabs-v2 ul li.tab-active' => 'border-color: {{VALUE}};',
                 ],
                 'default'       => '#0A0A0A'
             ]
@@ -319,8 +362,16 @@ class mt_addons_tabs_style_v2 extends Widget_Base {
         $this->start_controls_section(
             'style', 
             [
-                'label'         => esc_html__( 'Text', 'mt-addons' ),
+                'label'         => esc_html__( 'Title', 'mt-addons' ),
                 'tab'           => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'label'             => esc_html__( 'Typography', 'mt-addons' ),
+                'name'              => 'title_typography',
+                'selector'          => '{{WRAPPER}} .mt-addons-tabs-nav-title-top',
             ]
         );
         $this->add_control(
@@ -347,14 +398,14 @@ class mt_addons_tabs_style_v2 extends Widget_Base {
                 ],
             ]
         );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'          => 'title_typography',
-                'label'         => esc_html__( 'Title Typography', 'mt-addons' ),
-                'selector'      => '{{WRAPPER}} .mt-addons-tabs-nav-title-top',
-            ]
-        );
+        // $this->add_group_control(
+        //     \Elementor\Group_Control_Typography::get_type(),
+        //     [
+        //         'name'          => 'title_typography',
+        //         'label'         => esc_html__( 'Title Typography', 'mt-addons' ),
+        //         'selector'      => '{{WRAPPER}} .mt-addons-tabs-nav-title-top',
+        //     ]
+        // );
         $this->add_control(
             'description_spacing',
             [
@@ -397,29 +448,49 @@ class mt_addons_tabs_style_v2 extends Widget_Base {
             ]
         );
         $this->end_controls_section();
+        $this->start_controls_section(
+            'style_description', 
+            [
+                'label'         => esc_html__( 'Description', 'mt-addons' ),
+                'tab'           => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'label'             => esc_html__( 'Typography', 'mt-addons' ),
+                'name'              => 'description_typography',
+                'selector'          => '{{WRAPPER}} .mt-addons-tab-content-title',
+            ]
+        );
+        $this->end_controls_section();
         }   
         protected function render() {
         $settings               = $this->get_settings_for_display();
         $category_tabs          = $settings['category_tabs'];
-        $tab_text               = $settings['tab_text'];
         $top_title              = $settings['top_title'];
         $underline_nav          = $settings['underline_nav'];
-        $nav_style              = '';
-
+        // $content_position       = isset($settings['content_position']) ? $settings['content_position'] : '';
+        $content_position = isset($settings['content_position']) ? 'left' : 'right';
         if($underline_nav == 'yes') {
             $nav_style = '';
         } else {
             $nav_style = 'no_underline';
         }
-
+     
+        if (isset($settings['content_position'])) {
+            $content_position = 'left';
+        } else {
+            $content_position = 'right';
+        }
         ?>
         <div class="mt-addons-tabs-v2 <?php echo esc_attr($nav_style); ?>">
             <nav>
-                <div class="mt-addons-header-tabs col-md-12">
+                <div class="mt-addons-header-tabs col-md-12 <?php echo esc_attr($content_position);?>">
                     <h5 class="mt-addons-tabs-nav-title-header-top col-md-6"></h5>
                     <h5 class="mt-addons-tabs-nav-title-top col-md-6"><?php echo esc_html($top_title);?></h5>
                 </div>
-                <ul class="mt-addons-tabs-nav-v2 col-md-6"> 
+                <ul class="mt-addons-tabs-nav-v2 col-md-6 "> 
                     <?php $tab_id = 1; ?>
                     <?php if ($category_tabs) { ?>
                         <?php foreach ($category_tabs as $tab) { 
@@ -442,14 +513,17 @@ class mt_addons_tabs_style_v2 extends Widget_Base {
                             $desc_content       = $tab['desc_content'];
                             $button_text        = $tab['button_text'];
                             $button_url         = $tab['button_url'];
+
                         ?>
                         <section id="section-iconbox-<?php echo esc_attr($content_id);?>">
-                            <div class="mtfe-row">
+                            <div class="mtfe-row <?php echo esc_attr($content_position);?>">
                                 <div class="col-md-6 text-left"> 
-                                    <img class="mt-addons-tab-content-image" src="<?php echo esc_url($desc_image); ?>" alt="tabs-image">
+                                    <div class="zoom-img--main"> 
+                                        <img class="mt-addons-tab-content-image" src="<?php echo esc_url($desc_image); ?>" alt="tabs-image">
+                                    </div>
                                 </div>
                                 <div class="mt-addons-tab-v2-description col-md-6 text-left">
-                                    <h3 class="mt-addons-tab-content-title"><?php echo esc_html($desc_title); ?></h3>
+                                    <p class="mt-addons-tab-content-title"><?php echo esc_html($desc_title); ?></p>
                                     <div class="mt-addons-tab-desc-content">
                                         <?php echo wp_kses_post($tab['desc_content']); ?>
                                     </div>

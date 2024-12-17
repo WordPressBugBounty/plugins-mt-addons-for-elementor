@@ -226,6 +226,7 @@ class mt_addons_icon_with_text extends Widget_Base {
           		],
           		'selectors'		 	=> [
         			'{{WRAPPER}} .mt-icon-listgroup-icon-holder-inner span' => 'font-size: {{VALUE}}px;',
+        			'{{WRAPPER}} .mt-icon-listgroup-icon-holder-inner svg' => 'width: {{VALUE}}%;',
     			],
     			'default' 			=> '44',
             ]
@@ -241,6 +242,7 @@ class mt_addons_icon_with_text extends Widget_Base {
           		],
           		'selectors' 		=> [
         			'{{WRAPPER}} .mt-icon-listgroup-icon-holder-inner span' => 'color: {{VALUE}};',
+        			'{{WRAPPER}} .mt-icon-listgroup-icon-holder-inner svg' => 'fill: {{VALUE}};',
     			],
             ]
         );
@@ -535,6 +537,7 @@ class mt_addons_icon_with_text extends Widget_Base {
         $icon_position 			= $settings['icon_position'];
         $title 			        = $settings['title'];
         $subtitle 				= $settings['subtitle'];
+        $icon_url 				= $settings['icon_url'] ?? '';
         $icon_url 				= $settings['icon_url'];
         $icon_fontawesome 		= $settings['icon_fontawesome'];
         $icon_type 				= $settings['icon_type'];
@@ -545,7 +548,6 @@ class mt_addons_icon_with_text extends Widget_Base {
         if(!empty($settings['image'])) {
         	$image 				= $settings['image']['url'];
         }
-
         $btn_atts = '';
 		$btn_atts .= $icon_url['url'].',';
 		$btn_atts .= $icon_url['is_external'].',';
@@ -553,15 +555,6 @@ class mt_addons_icon_with_text extends Widget_Base {
 		$btn_atts .= $title.',';
     	$icon_url = esc_url($btn_atts);
 
-    	$image_svg = '';
-    	$elementor_icon_fontawesome = '';
-        if(!empty($icon_fontawesome)){ 
-	        if ($icon_fontawesome['library'] == 'svg') {
-	        	$image_svg = $icon_fontawesome['value']['id'];
-	        }else{
-	        	$elementor_icon_fontawesome = $icon_fontawesome['value'];
-	        }
-	    }
     	$url_link = mt_addons_build_box_icon_link($icon_url);
 
 	  	$icon_position_style = 'layout_before';
@@ -576,21 +569,31 @@ class mt_addons_icon_with_text extends Widget_Base {
 	      <div class="mt-icon-listgroup-holder <?php echo esc_attr($icon_position_style); ?>">
 		        <div class="mt-icon-listgroup-icon-holder-inner">
 		          	<?php if(empty($image)) { ?>
-		              	<?php $font_icon_class = $elementor_icon_fontawesome; ?>
 		            	<a href="<?php echo esc_url($url_link['url']); ?>" target="<?php echo esc_attr($url_link['target']); ?>" rel="<?php echo esc_attr($url_link['rel']); ?>">
-		              		<span class="<?php echo esc_attr($font_icon_class); ?>"></span>
+		              		<span><?php \Elementor\Icons_Manager::render_icon( $settings['icon_fontawesome'], [ 'aria-hidden' => 'true', 'class' => 'mt-icon-listgroup-icon-holder-inner' ] ); ?></span>
 		            	</a>
 		          	<?php } else { ?>
-		          		<a href="<?php echo esc_url($url_link['url']); ?>" target="<?php echo esc_attr($url_link['target']); ?>" rel="<?php echo esc_attr($url_link['rel']); ?>">
-		            		<img alt="list-image" class="mt-image-list" src="<?php echo esc_url($image); ?>">
-		          		</a>
+		          		<?php if (!empty($url_link['url']) && $url_link['url'] !== 'http://') { ?>
+			                <a href="<?php echo esc_url($url_link['url']); ?>" 
+			                   target="<?php echo isset($url_link['target']) ? esc_attr($url_link['target']) : '_self'; ?>" 
+			                   rel="<?php echo isset($url_link['rel']) ? esc_attr($url_link['rel']) : 'noopener'; ?>">
+			                    <img alt="list-image" class="mt-image-list" src="<?php echo esc_url($image); ?>">
+			                </a>
+			            <?php } else { ?>
+			                <img alt="list-image" class="mt-image-list" src="<?php echo esc_url($image); ?>">
+			            <?php } ?>
 		          	<?php }?>
 		        </div>
 		        <div class="mt-icon-listgroup-content-holder-inner" >
-		          	<<?php echo esc_attr( $title_tag ); ?> class="mt-icon-listgroup-title"><a href="<?php echo esc_url($url_link['url']); ?>" target="<?php echo esc_attr($url_link['target']); ?>" rel="<?php echo esc_attr($url_link['rel']); ?>"><?php echo esc_html($title); ?></a></<?php echo esc_attr( $title_tag ); ?>>
-		          
+		          	<<?php echo Utils::validate_html_tag( $title_tag ); ?> class="mt-icon-listgroup-title">
+					<?php if (!empty($url_link['url']) && $url_link['url'] !== 'http://') { ?>
+					    <a href="<?php echo esc_url($url_link['url']); ?>" target="<?php echo esc_attr($url_link['target']); ?>" rel="<?php echo esc_attr($url_link['rel']); ?>"><?php echo esc_html($title); ?></a>
+					<?php } else { ?>
+					    <?php echo esc_html($title); ?>
+					<?php } ?>
+		          	</<?php echo Utils::validate_html_tag( $title_tag ); ?>>
 		          	<?php if(!empty($subtitle)){ ?>
-		            	<<?php echo esc_attr( $subtitle_tag ); ?> class="mt-icon-listgroup-text"> <?php echo esc_attr($subtitle);?> </<?php echo esc_attr( $subtitle_tag ); ?>>      
+		            	<<?php echo Utils::validate_html_tag( $subtitle_tag ); ?> class="mt-icon-listgroup-text"> <?php echo esc_attr($subtitle);?> </<?php echo Utils::validate_html_tag( $subtitle_tag ); ?>>     
 		           	<?php } ?>
 		        </div>
 	      	</div>

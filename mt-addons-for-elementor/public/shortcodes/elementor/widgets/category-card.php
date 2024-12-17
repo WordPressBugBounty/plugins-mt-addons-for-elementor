@@ -147,12 +147,12 @@ class mt_addons_category_card extends Widget_Base {
         <div class="mt-addons-card-content">
             <a class="mt-addons-product-link" href="<?php echo esc_url($card_link); ?>">
                 <span class="mt-addons-category-overlay">
-                    <span class="mt-addons-category-name"><?php echo esc_html__($category_title); ?></span>
+                    <span class="mt-addons-category-name"><?php echo esc_html($category_title); ?></span>
                     <span class="mt-addons-category-count">
                         <strong>
                             <?php echo esc_attr($products_number); ?>
                         </strong>
-                        <?php echo esc_html__('Items Available'); ?>
+                        <?php echo esc_html__('Items Available', 'mt-addons'); ?>
                     </span>
                 </span>
             </a>

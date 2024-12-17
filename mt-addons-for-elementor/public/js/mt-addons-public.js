@@ -303,21 +303,32 @@
 		});
 		//End product category tabs
 
+
 		//Start Tabs v2
 		jQuery(document).ready(function () {
-	    	jQuery('.mt-addons-tabs-nav-v2 a').on('click', function (event) {
-	        	event.preventDefault();
-	        
-		        jQuery('.tab-active').removeClass('tab-active');
-		        jQuery(this).parent().addClass('tab-active');
-		        jQuery('.mt-addons-tab-content-v2 section').hide();
-		        jQuery(jQuery(this).attr('href')).show();
-	    	});
+		    jQuery('.mt-addons-tabs-v2').each(function () {
+		        var $container = jQuery(this);
 
-	    	jQuery('.mt-addons-tabs-nav-v2 a:first').trigger('click');
+		        // Handle tab click events within this container
+		        $container.find('.mt-addons-tabs-nav-v2 a').on('click', function (event) {
+		            event.preventDefault();
+
+		            // Remove active class from all tabs and add it to the clicked tab
+		            $container.find('.tab-active').removeClass('tab-active');
+		            jQuery(this).parent().addClass('tab-active');
+
+		            // Hide all tab contents and show the one corresponding to the clicked tab
+		            $container.find('.mt-addons-tab-content-v2 section').hide();
+		            $container.find(jQuery(this).attr('href')).show();
+		        });
+
+		        // Trigger click on the first tab to initialize the tab state
+		        $container.find('.mt-addons-tabs-nav-v2 a:first').trigger('click');
+		    });
 		});
-		//End Tabs v2
 
+		//End Tabs v2
+		
     	//Start Map Pins
     	jQuery(document).ready(function(jQuery){
 

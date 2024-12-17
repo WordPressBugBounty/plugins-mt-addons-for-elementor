@@ -1,0 +1,73 @@
+.mt-addons-premium-flipbox-card {
+  background-color: transparent;
+  height: 400px;
+  perspective: 1000px;
+}
+
+/* This container is needed to position the front and back side */
+.mt-addons-premium-flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.mt-addons-premium-flipbox-card-icon {
+    height: 100px !important;
+    width: fit-content;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mt-addons-premium-flip-card-back h3 {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+/* Position the front and back side */
+.mt-addons-premium-flip-card-front, .mt-addons-premium-flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e9e9e9;
+  flex-direction: column;
+  padding: 30px;
+  display: flex;
+   justify-content: center;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.mt-addons-premium-flip-card-front {
+  background-color: #bbb;
+  color: black;
+  background-position: center;
+  background-size: cover;
+}
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.mt-addons-premium-flipbox-card:hover .mt-addons-premium-flip-card-inner.mt-addons-premium-flip-horizontal {
+  transform: rotateY(180deg);
+}
+.mt-addons-premium-flip-card-back.mt-addons-premium-flip-horizontal {
+  transform: rotateY(180deg);
+}
+
+/* Do an vertical flip when you move the mouse over the flip box container */
+.mt-addons-premium-flipbox-card:hover .mt-addons-premium-flip-card-inner.mt-addons-premium-flip-vertical {
+  transform: rotateX(180deg);
+}
+.mt-addons-premium-flip-card-back.mt-addons-premium-flip-vertical {
+  transform: rotateX(180deg);
+}
+
+@media only screen and (max-width: 768px) {
+	.mt-addons-premium-flipbox-card .mt-addons-premium-flip-card-inner.mt-addons-premium-flip-horizontal {
+	    transform: rotateY(180deg);
+	}
+	.mt-addons-premium-flipbox-card .mt-addons-premium-flip-card-inner.mt-addons-premium-flip-vertical {
+	    transform: rotateX(180deg);
+	}
+}
