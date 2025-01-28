@@ -68,6 +68,8 @@ class MT_Addons_For_Elementor_Widgets {
 			require_once('widgets/products-carousel.php');
 			require_once('widgets/products-category-group.php');
 		}
+		require_once('widgets/image-with-badge.php');
+
 		if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
 			require_once('widgets/contact-form.php');
 		}
@@ -129,6 +131,7 @@ class MT_Addons_For_Elementor_Widgets {
 		if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
 			\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\mt_addons_contact_form() );
 		}
+		\Elementor\Plugin::instance()->widgets_manager->register( new \Elementor\mt_addons_image_badge_element() );
 	}
 }
 
