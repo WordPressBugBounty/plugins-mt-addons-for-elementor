@@ -157,4 +157,6 @@ class MT_Addons_Admin_Ajax {
 
 }
 
-new MT_Addons_Admin_Ajax;
+add_action('admin_init', function() {
+    new MT_Addons_Admin_Ajax();
+});

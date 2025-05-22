@@ -198,7 +198,7 @@ class mt_addons_icon_box_grid_item extends Widget_Base {
 			[
 				'label' 			=> esc_html__( 'Label/SubTitle', 'mt-addons' ),
 				'label_block' 		=> true,
-				'type' 				=> Controls_Manager::TEXT,
+				'type' 				=> Controls_Manager::TEXTAREA,
 				'default' 			=> esc_html__( 'Your dog will be walked in a safe, open space & will return home happy and tired.', 'mt-addons' ),
 			]
 		);
@@ -399,6 +399,17 @@ class mt_addons_icon_box_grid_item extends Widget_Base {
 				'label_block' 			=> true,
 			]
 		);
+		$this->add_control( 
+          	'read_more_icon',
+          	[
+            	'label' 			=> esc_html__( 'Read More Icon', 'mt-addons' ),
+            	'type'  			=> \Elementor\Controls_Manager::ICONS,
+            	'default' 			=> [
+              		'value' 			=> 'fas fa-arrow-right',
+              		'library' 			=> 'solid',
+            	]
+          	]
+        );
 		$this->add_control(
 			'btn_color',
 			[
@@ -451,6 +462,7 @@ class mt_addons_icon_box_grid_item extends Widget_Base {
         $subtitle_tag 			= $settings['subtitle_tag'];
         $icon 					= $settings['icon']['id'];
         $bg_hover               = $settings['bg_hover'];
+        $read_more_icon         = $settings['read_more_icon'];
         $read_more_text 		= $settings['read_more_text'];
         $read_more_link 		= $settings['read_more_link']['url'];
 
@@ -495,7 +507,8 @@ class mt_addons_icon_box_grid_item extends Widget_Base {
 
 		      			<?php if(!empty($read_more_link) && !empty($read_more_text)){ ?>
 		      				<div class="mt-addons-icon-btn-zone">
-		          				<a class="mt-addons-grid-btn-more" href="<?php echo esc_url($read_more_link); ?>"><?php echo esc_html($read_more_text); ?> <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i></a>
+		          				<a class="mt-addons-grid-btn-more" href="<?php echo esc_url($read_more_link); ?>"><?php echo esc_html($read_more_text); ?> <?php \Elementor\Icons_Manager::render_icon( $settings['read_more_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+		          				</a>
 		          			</div>
 						<?php } ?>
 		        	</div>

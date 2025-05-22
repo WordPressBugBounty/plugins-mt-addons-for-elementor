@@ -91,3 +91,6 @@
     -ms-transition: all 250ms ease;
     margin: 10px 0px 30px;
 }
+.mt_addons_products_carousel .mt_addons_product_item{
+    padding: 20px;
+}

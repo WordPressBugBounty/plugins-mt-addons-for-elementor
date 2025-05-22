@@ -37,13 +37,23 @@ class mt_addons_slider extends Widget_Base {
         return ['mt-addons-widgets'];
     }
 
+
     public function get_style_depends() {
-        return ['splitting', 'mtaddons-slider-style'];
+        wp_enqueue_style( 'mtaddons-slider-style', MT_ADDONS_SLIDER_ASSETS.'/css/widgets/slider.min.css' );
+        wp_enqueue_style( 'mtaddons-slider-slider', MT_ADDONS_SLIDER_ASSETS.'/css/widgets/slider.css' );
+        wp_enqueue_style( 'mtaddons-slider-splitting', MT_ADDONS_SLIDER_ASSETS.'/css/lib/splitting.min.css' );
+        wp_enqueue_style( 'mtaddons-swiper-min', MT_ADDONS_SLIDER_ASSETS.'/css/lib/swiper.min.css' );
+        return [
+            'mtaddons-slider-style', 'mtaddons-slider-slider', 'mtaddons-slider-splitting', 'mtaddons-swiper-min'
+        ];
     }
 
     public function get_script_depends() {
-        return [ 'splitting', 'mtaddons-slider-script' ];
+        wp_register_script( 'mtaddons-slider', MT_ADDONS_SLIDER_ASSETS.'/js/slider.js');
+        wp_register_script( 'mtaddons-slider-lib', MT_ADDONS_SLIDER_ASSETS.'/js/lib/splitting.min.js');
+        return [ 'jquery', 'elementor-frontend', 'mtaddons-slider', 'slider.min' ];
     }
+
 
 	public function get_keywords() {
         return [ 'slider'];

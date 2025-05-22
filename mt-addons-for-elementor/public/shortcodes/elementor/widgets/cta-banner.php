@@ -535,11 +535,11 @@ class mt_addons_cta_banner extends Widget_Base {
         <div class="mt-addons-cta-banner-shortcode mt-addons-cta-banner  mt-addons-cta-banner-inner mt-addons-cta-banner-layout--standard mt-addons-cta-banner-vertical--bottom mt-addons-cta-banner-horizontal--left mt-addons-cta-banner-image--hover-zoom ">
             <div class="mt-addons-cta-banner-content">
                 <div class="mt-addons-cta-banner-content-inner">
-                    <?php if(!empty($subtitle)){?>
-                        <h5 class="mt-addons-cta-banner-subtitle"><?php echo esc_html__($subtitle); ?> </h5>
-                    <?php }?>
                     <?php if(!empty($title)){?>
                         <h3 class="mt-addons-cta-banner-title"><?php echo esc_html__($title); ?> </h3>
+                    <?php }?>
+                    <?php if(!empty($subtitle)){?>
+                        <h5 class="mt-addons-cta-banner-subtitle"><?php echo esc_html__($subtitle); ?> </h5>
                     <?php }?>
                     <?php if(!empty($paragraph)){?>
                         <p class="mt-addons-cta-banner-text"><?php echo esc_html__($paragraph); ?></p>

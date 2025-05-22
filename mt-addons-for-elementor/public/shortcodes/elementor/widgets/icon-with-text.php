@@ -381,16 +381,16 @@ class mt_addons_icon_with_text extends Widget_Base {
                 'selector' 			=> '{{WRAPPER}} .mt-icon-listgroup-content-holder-inner .mt-icon-listgroup-title',
             ]
         ); 
-		$this->add_control(
+        $this->add_control(
 			'title_color',
 			[
 				'type' 				=> \Elementor\Controls_Manager::COLOR,
-				'label' 			=> esc_html__( 'Text Color', 'mt-addons' ),
+				'label' 			=> esc_html__( 'Title Color', 'mt-addons' ),
 				'label_block' 		=> true,
 				'selectors' 		=> [
-	        		'{{WRAPPER}} .mt-icon-listgroup-content-holder-inner a' => 'color: {{VALUE}};',
+	        		'{{WRAPPER}} .mt-icon-listgroup-content-holder-inner .mt-icon-listgroup-title' => 'color: {{VALUE}};',
 	    		],
-				'default' 			=> '#F0099D',
+				'default' 			=> '#FFFFFF',
 			]
 		);
 		$this->add_control(

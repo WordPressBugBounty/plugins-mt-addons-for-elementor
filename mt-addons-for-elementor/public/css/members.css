@@ -134,7 +134,11 @@
     width: 100%;
 }
 .e-fab-x-twitter {
-    width: 14px !important;
+    width: 13px !important;
+    margin-bottom: 2px;
+}
+i.fab.fa-youtube {
+    font-size: 16px;
 }
 @media only screen and (max-width: 767px) {
     .mt-addons-member-image .mt-addons-member-image-flex-zone {

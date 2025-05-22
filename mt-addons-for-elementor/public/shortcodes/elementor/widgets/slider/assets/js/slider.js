@@ -186,7 +186,7 @@
 
     };
 
-    Splitting();
+    // Splitting();
 
     jQuery(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/mtfe-slider.default', MT_Addons_Slider);

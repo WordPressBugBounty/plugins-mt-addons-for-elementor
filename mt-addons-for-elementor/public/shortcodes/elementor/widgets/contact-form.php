@@ -101,7 +101,25 @@ class mt_addons_contact_form extends Widget_Base {
                         .mt-addons-contact-form .wpcf7-form input[type=tel], 
                         .mt-addons-contact-form .wpcf7-form input[type=text], 
                         .mt-addons-contact-form .wpcf7-form input[type=url], 
-                        .mt-addons-contact-form .wpcf7-form select, 
+                        .mt-addons-contact-form .wpcf7-form select' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+            ]    
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'          => 'textarea_field_typography', 
+                'label'         => esc_html__( 'Textarea Typography', 'mt-addons' ),
+                'selector'      => '{{WRAPPER}} .mt-addons-contact-form .wpcf7-form textarea',
+            ]
+        );
+        $this->add_control(
+            'textarea_field_padding',
+            [
+                'label'         => esc_html__('TEXTAREA Padding', 'mt-addons'),
+                'type'          => Controls_Manager::DIMENSIONS,
+                'selectors'     => [
+                    '{{WRAPPER}} 
                         .mt-addons-contact-form .wpcf7-form textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]    
@@ -111,7 +129,7 @@ class mt_addons_contact_form extends Widget_Base {
             [
                 'name'          => 'fields_typography', 
                 'label'         => esc_html__( 'Field Typography', 'mt-addons' ),
-                'selector'      => '{{WRAPPER}} body .mt-addons-contact-form .wpcf7-form input[type="text"], body .mt-addons-contact-form .wpcf7-form input, .mt-addons-contact-form .wpcf7-form textarea',
+                'selector'      => '{{WRAPPER}} body .mt-addons-contact-form .wpcf7-form input[type="text"], body .mt-addons-contact-form .wpcf7-form input',
             ]
         );
         $this->add_control(
