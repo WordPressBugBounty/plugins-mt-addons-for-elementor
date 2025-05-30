@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, mt add
 Requires at least: 5.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -213,6 +213,8 @@ From wordpress.org
 2. A-Z Widgets list
 
 == Changelog ==
+= 1.1.1 - 29-05-2025 =
+- Improved: Optimize MT Timeline widget
 = 1.1.0 - 22-05-2025 =
 - Improved: Elementor widget fields
 = 1.0.9 - 19-05-2025 =
