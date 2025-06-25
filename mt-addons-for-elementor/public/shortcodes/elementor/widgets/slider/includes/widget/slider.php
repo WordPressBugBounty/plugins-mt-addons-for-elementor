@@ -19,9 +19,9 @@ defined( 'ABSPATH' ) || die();
 
 class mt_addons_slider extends Widget_Base {
 
-	use MT_Addons_ContentControl;
+    use MT_Addons_ContentControl;
 
-	public function get_name() {
+    public function get_name() {
         return 'mtfe-slider';
     }
 
@@ -39,23 +39,20 @@ class mt_addons_slider extends Widget_Base {
 
 
     public function get_style_depends() {
-        wp_enqueue_style( 'mtaddons-slider-style', MT_ADDONS_SLIDER_ASSETS.'/css/widgets/slider.min.css' );
-        wp_enqueue_style( 'mtaddons-slider-slider', MT_ADDONS_SLIDER_ASSETS.'/css/widgets/slider.css' );
-        wp_enqueue_style( 'mtaddons-slider-splitting', MT_ADDONS_SLIDER_ASSETS.'/css/lib/splitting.min.css' );
-        wp_enqueue_style( 'mtaddons-swiper-min', MT_ADDONS_SLIDER_ASSETS.'/css/lib/swiper.min.css' );
+        wp_enqueue_style( 'splitting', MT_ADDONS_SLIDER_ASSETS.'/css/lib/splitting.min.css', false, '1.0' );
+        wp_enqueue_style( 'mtaddons-slider-style', MT_ADDONS_SLIDER_ASSETS.'/css/widgets/slider.min.css', false, '1.0.2' );
+        wp_enqueue_style( 'mtaddons-swiper-min', MT_ADDONS_SLIDER_ASSETS.'/css/lib/swiper.min.css', false, '1.0' );
         return [
-            'mtaddons-slider-style', 'mtaddons-slider-slider', 'mtaddons-slider-splitting', 'mtaddons-swiper-min'
+            'splitting', 'mtaddons-slider-style', 'mtaddons-swiper-min'
         ];
     }
 
     public function get_script_depends() {
-        wp_register_script( 'mtaddons-slider', MT_ADDONS_SLIDER_ASSETS.'/js/slider.js');
-        wp_register_script( 'mtaddons-slider-lib', MT_ADDONS_SLIDER_ASSETS.'/js/lib/splitting.min.js');
-        return [ 'jquery', 'elementor-frontend', 'mtaddons-slider', 'slider.min' ];
+        return [ 'jquery', 'elementor-frontend', 'splitting', 'mtaddons-slider-script' ];
     }
 
 
-	public function get_keywords() {
+    public function get_keywords() {
         return [ 'slider'];
     }
 
@@ -2193,8 +2190,10 @@ class mt_addons_slider extends Widget_Base {
                     ],
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .mt-swiper-pagination .swiper-pagination-bullet'              => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-2 .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .mt-swiper-pagination .swiper-pagination-bullet'              => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-1 .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-2 .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-3 .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
                 ],
                 'condition'  => [
                     'slider_pagination' => 'yes',
@@ -2265,7 +2264,7 @@ class mt_addons_slider extends Widget_Base {
                     ],
                 ],
                 'selectors'  => [
-                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-2 .swiper-pagination-bullet-active' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-2 .swiper-pagination-bullet-active' => 'width: {{SIZE}}{{UNIT}} !important;',
                 ],
                 'condition'  => [
                     'slider_pagination' => 'yes',
@@ -2291,7 +2290,7 @@ class mt_addons_slider extends Widget_Base {
             [
                 'name'      => 'number_pagi_typography',
                 'label'     => esc_html__( 'Typography', 'mt-addons' ),
-                'selector'  => '{{WRAPPER}} .mt-swiper-pagination.pagi-style-4 .swiper-pagination-bullet .number, {{WRAPPER}} .pagi-style-6.swiper-pagination-fraction',
+                'selector'  => '{{WRAPPER}} .mt-swiper-pagination.pagi-style-4 .swiper-pagination-bullet .number, {{WRAPPER}} .mt-swiper-pagination.pagi-style-6',
                 'condition' => [
                     'slider_pagination' => 'yes',
                     'pagi_style'        => ['4', '6'],
@@ -2310,7 +2309,7 @@ class mt_addons_slider extends Widget_Base {
                     '{{WRAPPER}} .mt-swiper-pagination.pagi-style-3 .swiper-pagination-bullet:before'                                                                                => 'background-color: {{VALUE}}',
                     '{{WRAPPER}} .mt-swiper-pagination.pagi-style-4 .swiper-pagination-bullet .number'                                                                               => 'color: {{VALUE}}',
                     '{{WRAPPER}} .mt-swiper-pagination.pagi-style-5 .swiper-pagination-bullet:before'                                                                                => 'background-color: {{VALUE}}',
-                    '{{WRAPPER}} .pagi-style-6.swiper-pagination-fraction .swiper-pagination-current, {{WRAPPER}} .pagi-style-6.swiper-pagination-fraction .swiper-pagination-total' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-6 .swiper-pagination-current, {{WRAPPER}} .mt-swiper-pagination.pagi-style-6 .swiper-pagination-total' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'slider_pagination' => 'yes',
@@ -2324,7 +2323,7 @@ class mt_addons_slider extends Widget_Base {
                 'label'     => esc_html__( 'Separator Color', 'mt-addons' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .pagi-style-6.swiper-pagination-fraction' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mt-swiper-pagination.pagi-style-6' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'slider_pagination' => 'yes',

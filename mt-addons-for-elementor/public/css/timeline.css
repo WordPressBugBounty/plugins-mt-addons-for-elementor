@@ -137,39 +137,8 @@
   display: none;
 }
 .mt-addons-no-line .mt-addons-timeline-content {
-  width: 45%;
-}
-.mt-addons-no-line .mt-addons-timeline-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-.mt-addons-no-line .mt-addons-timeline-item:nth-child(odd) .mt-addons-timeline-content {
-  float: left;
-  padding-right: 30px;
-  margin-left: 0;
-}
-.mt-addons-no-line .mt-addons-timeline-item:nth-child(even) .mt-addons-timeline-content {
-  float: right;
-  padding-left: 30px;
-  margin-right: 0;
-}
-.mt-addons-no-line .mt-addons-timeline-item:nth-child(odd) .mt-addons-timeline-date {
-  position: absolute;
-  left: 119%;
-  top: 30px;
-  width: max-content;
-  padding: .8em 0;
-}
-.mt-addons-no-line .mt-addons-timeline-item:nth-child(even) .mt-addons-timeline-date {
-  position: absolute;
-  right: 119%;
-  top: 30px;
-  width: max-content;
-  padding: .8em 0;
-  text-align: right;
+  width: 100%;
+  margin-left: 60px;
 }
 .mt-addons-timeline-content .mt-addons-timeline-date {
   float: left;
@@ -700,7 +669,8 @@
 }
 
 .mt-addons-no-line .mt-addons-timeline-content {
-  width: 45%;
+  width: 100%;
+  margin-left: 60px;
 }
 
 /* Responsive Styles */

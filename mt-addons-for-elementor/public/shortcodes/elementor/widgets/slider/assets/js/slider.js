@@ -25,7 +25,7 @@
         var $slider = $($scope).find(".mt-slider"),
             $wid = $scope.data("id"),
             $sliderSettings = $slider.data('settings');
-        let sswiper;
+        let swiper;
         if (!$slider.length) {
             return;
         }
@@ -42,16 +42,27 @@
         $SliderOptions.on = {
             init: function () {
                 var swiper = this;
+                // Hide preloader when swiper is initialized
+                $slider.addClass('swiper-initialized');
+                
                 if ($SliderOptions.parallax === true) {
                     for (var i = 0; i < swiper.slides.length; i++) {
                         $(swiper.slides[i]).find('.slide-img-wrap').attr({ 'data-swiper-parallax': 0.75 * swiper.width });
                     }
+                }
+                // Initialize splitting for the active slide
+                if (typeof Splitting !== 'undefined') {
+                    Splitting();
                 }
             },
             slideChangeTransitionStart: function () {
                 var swiper = this;
                 var animatingElements = $(swiper.slides[swiper.activeIndex]).find('[data-animation]');
                 sliderAnimations(animatingElements);
+                // Re-initialize splitting for the new active slide
+                if (typeof Splitting !== 'undefined') {
+                    Splitting();
+                }
             },
             resize: function () {
                 this.update();
@@ -105,7 +116,7 @@
         if ('yes' === $sliderSettings.pagination) {
             if ('style-1' === $sliderSettings.pagiStyle) {
                 $SliderOptions.pagination = {
-                    el: '.dl-swiper-pagination',
+                    el: '.mt-swiper-pagination',
                     clickable: true,
                     renderBullet: function (index, className) {
                         return '<span class="' + className + '">' + '<svg class="dl-circle-loader" width="20" height="20" viewBox="0 0 20 20">' +
@@ -117,7 +128,7 @@
                 }
             } else if ('style-4' === $sliderSettings.pagiStyle) {
                 $SliderOptions.pagination = {
-                    el: '.dl-swiper-pagination',
+                    el: '.mt-swiper-pagination',
                     clickable: true,
                     renderBullet: function (index, className) {
                         return '<span class="' + className + '"><span class="number">0' + (index + 1) + '</span><span class="line"></span></span>';
@@ -125,7 +136,7 @@
                 }
             } else if ('style-6' === $sliderSettings.pagiStyle) {
                 $SliderOptions.pagination = {
-                    el: '.dl-swiper-pagination',
+                    el: '.mt-swiper-pagination',
                     clickable: true,
                     type: 'fraction',
                     formatFractionCurrent: function (number) {
@@ -145,40 +156,57 @@
                 }
             } else {
                 $SliderOptions.pagination = {
-                    el: '.dl-swiper-pagination',
+                    el: '.mt-swiper-pagination',
                     clickable: true
                 }
             }
         }
 
-        // if ('undefined' === typeof Swiper) {
-        //     const asyncSwiper = elementorFrontend.utils.swiper;
-        //     new asyncSwiper($slider, $SliderOptions).then((newSwiperInstance) => {
-        //         var swiper = newSwiperInstance;
-        //     });
-        // } else {
-        //     var swiper = new Swiper($slider, $SliderOptions);
-        // }
-
-        if ("undefined" === typeof Swiper) {
-            const asyncSwiper = elementorFrontend.utils.swiper;
-            new asyncSwiper(jQuery(".elementor-element-" + $wid + " .mt-slider"), $SliderOptions )
-                .then((newSwiperInstance) => {
-                    sswiper = newSwiperInstance;
-                });
-        } else {
-            window.sswiper = new Swiper(".elementor-element-" + $wid + " .mt-slider", $SliderOptions );
-            $(".elementor-element-" + $wid + " .mt-slider").css("visibility", "visible");
+        // Initialize Swiper
+        try {
+            if (typeof Swiper !== 'undefined') {
+                // Direct Swiper initialization
+                swiper = new Swiper($slider[0], $SliderOptions);
+                $slider.css("visibility", "visible");
+            } else if (typeof elementorFrontend !== 'undefined' && elementorFrontend.utils && elementorFrontend.utils.swiper) {
+                // Elementor async Swiper initialization
+                const asyncSwiper = elementorFrontend.utils.swiper;
+                new asyncSwiper($slider, $SliderOptions)
+                    .then((newSwiperInstance) => {
+                        swiper = newSwiperInstance;
+                    })
+                    .catch((error) => {
+                        console.error('Swiper initialization failed:', error);
+                        // Fallback: hide preloader even if swiper fails
+                        $slider.addClass('swiper-initialized');
+                    });
+            } else {
+                // Fallback: hide preloader if Swiper is not available
+                console.warn('Swiper not available, hiding preloader');
+                $slider.addClass('swiper-initialized');
+            }
+        } catch (error) {
+            console.error('Swiper initialization error:', error);
+            // Fallback: hide preloader on error
+            $slider.addClass('swiper-initialized');
         }
+
+        // Fallback timeout to hide preloader if initialization takes too long
+        setTimeout(function() {
+            if (!$slider.hasClass('swiper-initialized')) {
+                console.warn('Swiper initialization timeout, hiding preloader');
+                $slider.addClass('swiper-initialized');
+            }
+        }, 5000);
 
         if (true === $sliderSettings.autoplay) {
             if ($sliderSettings.pauseOnHover === true) {
-                jQuery(".elementor-element-" + $wid + " .mt-slider").hover(
+                $slider.hover(
                     function () {
-                        sswiper.autoplay.stop();
+                        swiper.autoplay.stop();
                     },
                     function () {
-                        sswiper.autoplay.start();
+                        swiper.autoplay.start();
                     }
                 );
             }
@@ -186,10 +214,22 @@
 
     };
 
-    // Splitting();
-
     jQuery(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/mtfe-slider.default', MT_Addons_Slider);
+    });
+
+    // Fallback initialization for Splitting
+    jQuery(document).ready(function() {
+        if (typeof Splitting !== 'undefined') {
+            Splitting();
+        } else {
+            // Wait for Splitting to load
+            setTimeout(function() {
+                if (typeof Splitting !== 'undefined') {
+                    Splitting();
+                }
+            }, 1000);
+        }
     });
 
 }(jQuery, window.elementorFrontend));

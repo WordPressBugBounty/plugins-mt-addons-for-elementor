@@ -5,7 +5,7 @@
  * Plugin Name:       MT Addons for Elementor
  * Plugin URI:        https://mt-addons.modeltheme.com/
  * Description:       MT Addons is one of the largest databases of Elementor Widgets. Can be used with Elementor Free or Pro.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Requires at least: 5.2
  * Tested up to:      6.8
  * Requires PHP:      7.4

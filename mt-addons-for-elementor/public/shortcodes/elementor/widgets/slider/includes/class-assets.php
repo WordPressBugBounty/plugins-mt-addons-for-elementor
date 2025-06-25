@@ -35,7 +35,7 @@ class MT_Addons_Slider_Assets {
     public function register_scripts() {
         $min = ( WP_DEBUG === true ) ? '' : '.min';
         wp_register_script( 'splitting', MT_ADDONS_SLIDER_ASSETS . '/js/lib/splitting.min.js', [], '1.0', true );
-        wp_register_script( 'mtaddons-slider-script', MT_ADDONS_SLIDER_ASSETS . '/js/slider'. $min .'.js', ['jquery', 'elementor-frontend'], '1.0.2', true );
+        wp_register_script( 'mtaddons-slider-script', MT_ADDONS_SLIDER_ASSETS . '/js/slider'. $min .'.js', ['jquery', 'elementor-frontend', 'splitting'], '1.0.2', true );
     }
 
 }

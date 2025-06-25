@@ -309,7 +309,7 @@ class MT_Addons_Slider_Helper {
     static function get_btn( $data = [] ) {
         if( ! empty( $data['btn_label'] && $data['btn_url']['url'] ) ) {
             $target = $data['btn_url']['is_external'] ? ' target="_blank"' : '';
-		    $nofollow = $data['btn_url']['nofollow'] ? ' rel="nofollow"' : '';
+            $nofollow = $data['btn_url']['nofollow'] ? ' rel="nofollow"' : '';
             $splitting_text = self::is_splitting_effect( $data['btn_animation'] );
             $icon = ! empty( $data['btn_icon']['value'] ) ? ' <i class="'. $data['btn_icon']['value'] .'"></i>' : '';
             if( $splitting_text == true ) {
@@ -330,7 +330,7 @@ class MT_Addons_Slider_Helper {
     static function get_secondary_btn( $data = [] ) {
         if( ! empty( $data['secondary_btn_label'] && $data['secondary_btn_url']['url'] ) ) {
             $target = $data['secondary_btn_url']['is_external'] ? ' target="_blank"' : '';
-		    $nofollow = $data['secondary_btn_url']['nofollow'] ? ' rel="nofollow"' : '';
+            $nofollow = $data['secondary_btn_url']['nofollow'] ? ' rel="nofollow"' : '';
             $splitting_text = self::is_splitting_effect( $data['secondary_btn_animation'] );
             $icon = ! empty( $data['secondary_btn_icon']['value'] ) ? ' <i class="'. $data['secondary_btn_icon']['value'] .'"></i>' : '';
             if( $splitting_text == true ) {
@@ -351,7 +351,7 @@ class MT_Addons_Slider_Helper {
     static function get_play_btn( $data = [] ) {
         if( ! empty( $data['play_btn_url']['url'] ) ) {
             $target = $data['play_btn_url']['is_external'] ? ' target="_blank"' : '';
-		    $nofollow = $data['play_btn_url']['nofollow'] ? ' rel="nofollow"' : '';
+            $nofollow = $data['play_btn_url']['nofollow'] ? ' rel="nofollow"' : '';
             $btn_text = ! empty( $data['play_btn_label'] ) ? '<small>'. $data['play_btn_label'] .'</small>' : '';
             $output = '<a class="dl-play-btn" '. $target . $nofollow .' data-animation="'. $data['play_btn_animation'] .'" data-delay="'. $data['play_btn_anim_delay']['size'] .'ms" data-duration="'. $data['play_btn_anim_delay']['size'] .'ms" href="'. esc_url( $data['play_btn_url']['url'] ) .'"><span class="play-icon"><svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 448 512"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg></span>'. $btn_text .'</a>';
             echo wp_kses( $output, self::allowed_html() );
@@ -413,6 +413,7 @@ class MT_Addons_Slider_Helper {
         if(in_array( $val, $effects, true ) ) {
             return true;
         }
+        return false;
     }
 
     /**
@@ -452,7 +453,7 @@ class MT_Addons_Slider_Helper {
                 echo '<div class="mt-slider-button-prev">' . wp_kses( self::get_svg_icons()["arrow-left{$nav_icon}"], self::allowed_html() ) . '</div>';
             }
             if( 'yes' === $pagination ) {
-                echo '<div class="dl-swiper-pagination pagi-style-'. esc_attr( $pagiStyle ) .'"></div>';
+                echo '<div class="mt-swiper-pagination pagi-style-'. esc_attr( $pagiStyle ) .'"></div>';
             }
             if( 'yes' === $navigation && '1' === $style ) {
                 echo '<div class="mt-slider-button-next">' . wp_kses( self::get_svg_icons()["arrow-right{$nav_icon}"], self::allowed_html() ) . '</div>';
