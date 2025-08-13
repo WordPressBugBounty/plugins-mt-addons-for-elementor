@@ -5,7 +5,7 @@
  * Plugin Name:       MT Addons for Elementor
  * Plugin URI:        https://mt-addons.modeltheme.com/
  * Description:       MT Addons is one of the largest databases of Elementor Widgets. Can be used with Elementor Free or Pro.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Requires at least: 5.2
  * Tested up to:      6.8
  * Requires PHP:      7.4
@@ -61,7 +61,7 @@ if ( function_exists( 'mtfe_fs' ) ) {
         // Signal that SDK was initiated.
         do_action( 'mtfe_fs_loaded' );
     }
-    DEFINE( 'MT_ADDONS_VERSION', '1.1.0' );
+    DEFINE( 'MT_ADDONS_VERSION', '1.1.3' );
     DEFINE( 'MT_ADDONS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
     DEFINE( 'MT_ADDONS_ASSETS', MT_ADDONS_PLUGIN_URL . 'assets/' );
     DEFINE( 'MT_ADDONS_PUBLIC_ASSETS', MT_ADDONS_PLUGIN_URL . 'public/' );

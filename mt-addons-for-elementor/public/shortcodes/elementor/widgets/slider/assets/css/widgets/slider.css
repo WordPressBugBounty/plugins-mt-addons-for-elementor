@@ -151,6 +151,34 @@
 .mt-slider{
 	overflow: hidden;
 }
+
+/* Vertical Slider Styles */
+.mt-slider.swiper-container-vertical {
+	height: 100vh !important;
+	min-height: 650px;
+	overflow: hidden;
+}
+
+.mt-slider.swiper-container-vertical .swiper-slide {
+	height: 100vh !important;
+	min-height: 650px;
+}
+
+.mt-slider.swiper-container-vertical .slider-content-wrap {
+	height: 100vh !important;
+	min-height: 650px;
+}
+
+.mt-slider.swiper-container-vertical .slide-img,
+.mt-slider.swiper-container-vertical .slide-img-wrap {
+	height: 100vh !important;
+	min-height: 650px;
+}
+
+.mt-slider.swiper-container-vertical .swiper-wrapper {
+	flex-direction: column;
+}
+
 .mt-slider .swiper-slide {
 	position: relative;
 	overflow: hidden;

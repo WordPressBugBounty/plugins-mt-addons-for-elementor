@@ -165,21 +165,7 @@ class mt_addons_progress_bar extends Widget_Base {
           ],
         ]
       );
-    
-      if (!function_exists('mt_addons_progressbar_attributes')) {
-        function mt_addons_progressbar_attributes($id = '', $progress_color = '', $trail_color= '', $duration= '',$number= '' ,$bar_stroke= '', $bar_height= '', $trail_height= '', $percentage_type= ''){ ?>
-          data-progressbar-id="<?php echo esc_attr($id); ?>"  
-          data-progressbar-color="<?php echo esc_attr($progress_color); ?>"
-          data-progressbar-trail-color="<?php echo esc_attr($trail_color); ?>"
-          data-progressbar-duration="<?php echo esc_attr($duration); ?>"
-          data-progressbar-data-number="<?php echo esc_attr($number); ?>"
-          data-progressbar-data-bar-stroke="<?php echo esc_attr($bar_stroke); ?>"
-          data-progressbar-data-bar-height="<?php echo esc_attr($bar_height); ?>"
-          data-progressbar-data-trail-width="<?php echo esc_attr($trail_height); ?>"
-          data-progressbar-percentage-type="<?php echo esc_attr($percentage_type); ?>"
-          <?php 
-        }
-      }
+      
       $this->end_controls_section();
     }
 
@@ -197,7 +183,16 @@ class mt_addons_progress_bar extends Widget_Base {
 
         $id = 'mt-addons-progress-bar-'.uniqid(); ?>      
         <div id="<?php echo esc_attr($id); ?>" 
-          <?php mt_addons_progressbar_attributes( $id, $progress_color, $trail_color, $duration, $number, $bar_stroke , $bar_height, $trail_height, $percentage_type); ?> class="mt-addons-progress-bar">
+            data-progressbar-id="<?php echo esc_attr($id); ?>"  
+            data-progressbar-color="<?php echo esc_attr($progress_color); ?>"
+            data-progressbar-trail-color="<?php echo esc_attr($trail_color); ?>"
+            data-progressbar-duration="<?php echo esc_attr($duration); ?>"
+            data-progressbar-data-number="<?php echo esc_attr($number); ?>"
+            data-progressbar-data-bar-stroke="<?php echo esc_attr($bar_stroke); ?>"
+            data-progressbar-data-bar-height="<?php echo esc_attr($bar_height); ?>"
+            data-progressbar-data-trail-width="<?php echo esc_attr($trail_height); ?>"
+            data-progressbar-percentage-type="<?php echo esc_attr($percentage_type); ?>"
+            class="mt-addons-progress-bar">
             <div class="mt-addons-progress-content">
               <h6 class="mt-addons-progress-title <?php echo esc_attr($percentage_type); ?>"><?php echo esc_html($bar_label); ?> </h6>
             </div>

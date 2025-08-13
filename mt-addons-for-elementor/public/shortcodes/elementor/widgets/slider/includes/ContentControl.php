@@ -1677,18 +1677,6 @@ trait MT_Addons_ContentControl {
         );
 
         $this->add_control(
-            'parallax',
-            [
-                'label'        => esc_html__( 'Parallax', 'mt-addons' ),
-                'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'mt-addons' ),
-                'label_off'    => esc_html__( 'No', 'mt-addons' ),
-                'return_value' => 'yes',
-                'default'      => 'yes',
-            ]
-        );
-
-        $this->add_control(
             'slide_dir',
             [
                 'label'     => esc_html__( 'Slide Direction', 'mt-addons' ),
@@ -1696,10 +1684,6 @@ trait MT_Addons_ContentControl {
                 'default'   => 'horizontal',
                 'options'   => [
                     'horizontal' => esc_html__( 'Horizontal', 'mt-addons' ),
-                    'vertical'   => esc_html__( 'Vertical', 'mt-addons' ),
-                ],
-                'condition' => [
-                    'parallax!' => 'yes',
                 ],
             ]
         );
@@ -1716,9 +1700,6 @@ trait MT_Addons_ContentControl {
                     'coverflow' => esc_html__( 'Coverflow', 'mt-addons' ),
                     'flip'      => esc_html__( 'Flip', 'mt-addons' ),
                     'cube'      => esc_html__( 'Cube', 'mt-addons' ),
-                ],
-                'condition' => [
-                    'parallax!' => 'yes',
                 ],
             ]
         );

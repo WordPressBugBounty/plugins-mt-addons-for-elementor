@@ -82,26 +82,35 @@
             // }
         }
 
-        if ($SliderOptions.parallax != true) {
-            $SliderOptions.direction = $sliderSettings.direction;
+        $SliderOptions.direction = $sliderSettings.direction;
+        
+        // For vertical sliders, force slide effect as some effects don't work with vertical
+        if ($sliderSettings.direction === 'vertical') {
+            $SliderOptions.effect = 'slide';
+            $slider.addClass('swiper-container-vertical');
+            console.log('Vertical slider initialized with direction:', $sliderSettings.direction);
+        } else {
             $SliderOptions.effect = $sliderSettings.effect;
-            if ('coverflow' === $SliderOptions.effect) {
-                $SliderOptions.coverflowEffect = {
-                    rotate: 30,
-                    slideShadows: false,
-                }
-            } else if ('fade' === $SliderOptions.effect) {
-                $SliderOptions.fadeEffect = {
-                    crossFade: true
-                }
-            } else if ('flip' === $SliderOptions.effect) {
-                $SliderOptions.flipEffect = {
-                    slideShadows: false
-                }
-            } else if ('cube' === $SliderOptions.effect) {
-                $SliderOptions.cubeEffect = {
-                    slideShadows: false
-                }
+            console.log('Horizontal slider initialized with direction:', $sliderSettings.direction);
+        }
+        
+        // Apply effect-specific options
+        if ('coverflow' === $SliderOptions.effect) {
+            $SliderOptions.coverflowEffect = {
+                rotate: 30,
+                slideShadows: false,
+            }
+        } else if ('fade' === $SliderOptions.effect) {
+            $SliderOptions.fadeEffect = {
+                crossFade: true
+            }
+        } else if ('flip' === $SliderOptions.effect) {
+            $SliderOptions.flipEffect = {
+                slideShadows: false
+            }
+        } else if ('cube' === $SliderOptions.effect) {
+            $SliderOptions.cubeEffect = {
+                slideShadows: false
             }
         }
 
@@ -164,6 +173,7 @@
 
         // Initialize Swiper
         try {
+            console.log('Swiper options:', $SliderOptions);
             if (typeof Swiper !== 'undefined') {
                 // Direct Swiper initialization
                 swiper = new Swiper($slider[0], $SliderOptions);
